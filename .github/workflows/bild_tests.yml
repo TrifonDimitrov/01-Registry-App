@@ -42,7 +42,7 @@ jobs:
       - name: Run tests
         run: npm test
 
-    deploy:
+  deploy:
     if: github.ref == 'refs/heads/main'
     needs: security_test
     runs-on: ubuntu-latest
