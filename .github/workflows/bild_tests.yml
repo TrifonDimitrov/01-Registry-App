@@ -10,14 +10,10 @@ jobs:
   unit_test:
     runs-on: ubuntu-latest
 
-    strategy:
-      matrix:
-        node-version: [18.x, 19.x, 20.x]
-
     steps:
       - name: Checkout the repository
         uses: actions/checkout@v4
-      - name: Use Node.js ${{ matrix.node-version}}
+      - name: Use Node.js 20
         uses: actions/setup-node@v4
         with:
           node-version: 20
@@ -48,8 +44,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Deploy to production
-        uses: johnbeynon/render-deploy-action@v0.0.8
+        uses: JorgeLNJunior/render-deploy-action@v1.4.5
         with:
           service-id: ${{ secrets.MY_RENDER_SERVICE_ID }}
           api-key: ${{ secrets.MY_RENDER_API_KEY }}
-          wait-for-success: true
+          wait-deploy: true
